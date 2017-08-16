@@ -120,7 +120,7 @@ module PaypalAdaptive
         rescue_error_message(e, "Error reading from remote server.")
       rescue JSON::ParserError => e
         rescue_error_message(e, "Response is not in JSON format.", response_data)
-      rescue Exception => e
+      rescue StandardError => e
         case e
         when Errno::ECONNRESET
           rescue_error_message(e, "Connection Reset. Request invalid URL.")
